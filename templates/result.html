@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Prediction Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <h1>📊 Prediction Result</h1>
+
+        {% if price %}
+        <p><strong>Predicted Price:</strong> ₹ {{ price | indian_format }}</p>
+        <h3>📈 Future Value Projection</h3>
+        <ul>
+            <li>After 1 Year: ₹ {{ fv_1y | indian_format }}</li>
+            <li>After 3 Years: ₹ {{ fv_3y | indian_format }}</li>
+            <li>After 5 Years: ₹ {{ fv_5y | indian_format }}</li>
+        </ul>
+
+        {% else %}
+        <p class="error">⚠️ Error: Unable to make prediction.</p>
+        {% endif %}
+
+        <div class="back-btn-container" onclick="window.location.href='/'">
+            <p class="back-btn">🔙 Back to Prediction Form</p>
+        </div>
+
+        <div class="back-btn-container" onclick="window.location.href='/logout'">
+            <p class="back-btn">Logout</p>
+        </div>
+    </div>
+</body>
+
+</html>

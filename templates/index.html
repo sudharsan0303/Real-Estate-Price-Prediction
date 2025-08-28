@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Real Estate Price Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>🏠 Real Estate Price Prediction</h1>
+        <form action="/predict" method="POST">
+            <label for="city">City:</label>
+            <select name="city" required>
+                <option value="">Select City</option>
+                {% for city in cities %}
+                    <option value="{{ city }}">{{ city }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="location">Location:</label>
+            <input type="text" name="location" required placeholder="Enter Location">
+
+            <label for="area">Area (in sq. ft):</label>
+            <input type="number" name="area" step="any" min="0" required>
+
+            <label for="bhk">Number of Bedrooms (BHK):</label>
+            <input type="number" name="bhk" min="1" required>
+
+            <label for="bath">Number of Bathrooms:</label>
+            <input type="number" name="bath" min="1" required>
+
+            <button type="submit">🔍 Predict Price</button>
+        </form>
+    </div>
+</body>
+</html>
